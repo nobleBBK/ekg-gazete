@@ -107,6 +107,7 @@ header h1 {
     background-color: #444 !important;
 }
 .dropdown:hover .dropdown-content { display: flex; }
+.dropdown.active .dropdown-content {display: flex;}
 .dropdown-content{pointer-events: auto;}
 
 

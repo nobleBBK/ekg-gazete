@@ -1,12 +1,20 @@
-// EKG - Script Dosyası Çalışıyor mu Kontrolü
-console.log("EKG Projesi: Bağlantı Başarılı. Üstat, site yayına hazır!");
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownLink = document.querySelector('.dropdown > a');
 
-// İleride slider'ı otomatik kaydırmak istersen burayı kullanacağız
-function sliderBaslat() {
-    console.log("Slider fonksiyonu hazır bekliyor...");
-}
+    // Dokunmatik cihazlar için tıklama kontrolü
+    dropdownLink.addEventListener('click', function(e) {
+        // Eğer ekran genişliği 1024px'den küçükse (Mobil/Tablet)
+        if (window.innerWidth <= 1024) {
+            e.preventDefault(); // Sayfanın en üste zıplamasını engeller
+            dropdown.classList.toggle('active'); // Aç/Kapat yapar
+        }
+    });
 
-// Sayfa tamamen yüklendiğinde çalışacak komutlar
-document.addEventListener("DOMContentLoaded", () => {
-    sliderBaslat();
+    // Sayfada başka bir yere dokunulursa menüyü kapat
+    document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
 });
