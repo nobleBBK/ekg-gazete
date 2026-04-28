@@ -2,16 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const dropbtn = document.querySelector('.dropbtn');
 
-    dropbtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-    });
+    if (dropbtn) {
+        dropbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+    }
 
-    // Menü açıkken başka yere dokunulursa kapat
+    // Başka yere dokunulursa menüyü kapat
     document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove('show');
+        if (dropdown && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
         }
     });
 });
