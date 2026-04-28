@@ -89,21 +89,28 @@ main {
     display: grid;
     grid-template-columns: 2fr 1fr; /* Sol taraf 2 kat daha geniş */
     gap: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 /* Manşet Alanı */
 .main-featured {
-    background: #fff;
-    padding: 40px;
+    background: #f4f1ea;
+    padding: 25px;
     border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.main-featured h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
 /* Günün Nabzı Kutusu */
 .pulse-box {
     background: #333; /* Ters renklerle dikkat çeker */
     color: #fdfaf6;
-    padding: 30px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -120,7 +127,7 @@ main {
 }
 
 .pulse-content {
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 .pulse-content .concept {
