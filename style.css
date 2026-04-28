@@ -293,58 +293,44 @@ footer {
     }
 }
 
-/* --- ENTELEKTÜEL DROPDOWN (NİHAİ ÇÖZÜM) --- */
+/* --- NAVİGASYON & DROPDOWN NİHAİ DÜZELTME --- */
 
-/* Kapsayıcıyı hizala */
-.dropdown {
-    position: relative;
-    display: inline-block;
+/* 1. Ana Sayfa Vurgusunu Zarifleştirme */
+.main-nav li a.active {
+    background-color: transparent !important; /* Siyah kutuyu kaldırdık */
+    color: #333 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #e26a2c; /* Siyah kutu yerine şık bir turuncu alt çizgi */
 }
 
-/* Menü Kutusu: Her cihazda butonun tam altında başlar */
-.dropdown-content {
-    display: none; /* Başlangıçta kapalı */
-    position: absolute;
-    top: 100%; /* Butonun tam alt sınırı */
-    left: 0; /* Butonun sol hizasından başlar */
-    background-color: #333;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 9999;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    flex-direction: column;
-}
+/* 2. Mobil ve Portrait (Dikey) Ekran Ayarı */
+@media (max-width: 1024px) {
+    .main-nav ul {
+        flex-wrap: wrap; /* Menü sığmazsa alt satıra geçer, kırılmaz */
+        justify-content: center;
+    }
 
-/* Liste Elemanları */
-.dropdown-content li {
-    display: block;
-    width: 100%;
-    border-bottom: 1px solid #444;
-}
-
-.dropdown-content li a {
-    color: #fdfaf6 !important;
-    padding: 15px 20px !important;
-    display: block !important;
-    text-decoration: none;
-    text-align: left;
-    font-size: 0.9rem;
-    text-transform: none !important;
-}
-
-/* JS 'show' sınıfı eklediğinde kutuyu açar */
-.dropdown.show .dropdown-content {
-    display: flex !important;
-}
-
-/* PC'de (Mouse olan cihazlarda) üzerine gelince de açılsın */
-@media (hover: hover) {
-    .dropdown:hover .dropdown-content {
-        display: flex !important;
+    .dropdown-content {
+        min-width: 100vw !important; /* Mobilde menü ekranı tam kaplasın ki rahat basılsın */
+        left: 50% !important;
+        transform: translateX(-50%);
+        position: fixed !important; /* Sayfadan bağımsız en üstte açılır */
+        top: auto !important;
     }
 }
+
+/* 3. Menünün Görünürlüğünü Garantiye Al */
+.dropdown.show .dropdown-content {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Dokunmatik cihazlarda tıklama alanını genişletelim */
+.dropbtn {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
 
 }
 
