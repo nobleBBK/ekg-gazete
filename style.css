@@ -1,0 +1,63 @@
+/* Genel Ayarlar */
+body {
+    font-family: 'Georgia', serif; /* Entelektüel ve klasik bir hava için */
+    background-color: #fdfaf6; /* Kağıt rengi, gözü yormaz */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 5px;
+}
+
+main {
+    max-width: 800px; /* Okumayı kolaylaştırmak için dar tutuyoruz */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Slider Alanı */
+.slider-container {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+/* Yazı Listesi */
+.post-list h3 {
+    border-bottom: 2px solid #333;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.post-item {
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.post-item span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.post-item h4 {
+    margin: 5px 0;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.post-item h4:hover {
+    color: #e26a2c; /* Senin sevdiğin o turuncu tonu */
+}
