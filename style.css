@@ -344,3 +344,23 @@ footer {
     display: flex !important; /* Mobil/Tablette tıklayınca */
 }
 
+/* --- MOBİL VE RENK DÜZELTMELERİ --- */
+
+/* Ana Sayfa'nın sürekli siyah kalmasını önler, yerine turuncu alt çizgi yapar */
+.main-nav li a.active {
+    background-color: transparent !important;
+    color: #333 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #e26a2c;
+}
+
+/* Telefon dikey ekranda menünün açılmasını garanti eder */
+@media (max-width: 1024px) {
+    .dropdown-content {
+        min-width: 100vw !important; /* Ekranı tam kapla */
+        left: 50% !important;
+        transform: translateX(-50%);
+        position: fixed !important; /* Sayfanın her yerinden erişilir yap */
+        top: 20% !important; /* Menü çok yukarıda kalmasın diye biraz aşağı aldık */
+    }
+}
