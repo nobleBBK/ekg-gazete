@@ -305,6 +305,16 @@ footer {
 }
 
 
+.nav-list > li > a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
 /* DROPDOWN - GİZLİ KUTU AYARI */
 .dropdown {
     position: relative; /* Alt menü buna göre hizalanır */
@@ -322,9 +332,6 @@ footer {
     padding: 0;
     margin: 0;
     flex-direction: column; /* Elemanları alt alta zorlar */
-    max-width: 200px; /* Sabit genişlik sayfa dengesini bozmaz */
-    left: 0;
-    right: auto;
 }
 
 /* Alt Menü Linkleri */
