@@ -380,7 +380,14 @@ footer {
         padding: 0 10px;
     }
 }
-
+/* Eğer dropdown 'open' sınıfını almışsa, içeriği mutlaka göster */
+.dropdown.open .dropdown-content {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    /* Tıklanabilir olmasını sağlar */
+}
 
 
 
