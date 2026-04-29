@@ -27,27 +27,34 @@ header {
 header h1 {
     font-size: 4rem;
     margin: 0;
-    letter-spacing: 8px;
     font-weight: bold;
     position: relative;
     display: inline-block;
-    /* Sağdaki taşmayı engellemek için son harfin boşluğunu telafi ediyoruz */
-    padding-right: 0; 
+    
+    /* --- TAŞMAYI ÖNLEYEN KRİTİK AYARLAR --- */
+    letter-spacing: 8px;
+    /* En sondaki harfin sağındaki 8px boşluğu telafi edip bloğu tam merkeze çeker */
+    margin-right: -8px; 
+    padding: 0;
 }
 
-/* Gerçekçi Nabız Çizgisi */
+/* Nabız Çizgisi */
 header h1::after {
     content: "";
     display: block;
-    /* Taşmayı önlemek için genişliği tam %100 değil, hafif içeride tutuyoruz */
-    width: calc(100% - 8px); 
+    /* Artık bounding box düzeldiği için tam %100 kullanabiliriz */
+    width: 100%; 
     height: 2px;
     background: #e26a2c;
-    margin: 12px auto 0;
-    /* 5 saniyelik çok sakin bir döngü: Stoacı Nabız */
+    
+    /* --- BOŞLUĞU DARALTAN AYAR --- */
+    /* 12px olan boşluğu 2px'e indirdik, tam harflerin dibine çektik */
+    margin: 2px auto 0; 
+    
     animation: real-heartbeat 5s infinite ease-in-out;
     transform-origin: center;
 }
+
 
 
 
