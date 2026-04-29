@@ -342,3 +342,44 @@ a, a:visited, a:hover, a:active {
     font-size: 0.95rem;
     line-height: 1.6;
 }
+
+/* --- HAKKINDA SAYFASI ÖZEL --- */
+.about-section {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #f4f1ea;
+    padding: 40px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.separator {
+    font-size: 1.5rem;
+    margin: 40px 0;
+    color: #e26a2c;
+}
+
+.contact-info h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.email-link {
+    color: #e26a2c !important;
+    font-weight: bold;
+    text-decoration: underline !important;
+}
