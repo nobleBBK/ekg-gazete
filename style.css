@@ -233,69 +233,18 @@ footer {
     color: #aaa;
 }
 
-/* --- RESPONSIVE (MOBİL & TABLET) AYARLARI --- */
+/* ============================================================
+   EKG NAVİGASYON SİSTEMİ (NİHAİ & KARARLI)
+   ============================================================ */
 
-/* Tablet ve Küçük Ekranlar (768px altı) */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.8rem;
-    }
-
-    .main-nav ul {
-        justify-content: flex-start;
-        overflow: visible !important;
-        /* Duvarları yıkıyoruz */
-        padding: 0 15px;
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
-    .main-nav li a {
-        padding: 12px 15px;
-        white-space: nowrap; /* Menü yazılarını kırmaz */
-    }
-}
-
-/* Mobil Telefonlar (480px altı) */
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2.2rem;
-    }
-
-    .full-name {
-        font-size: 0.9rem;
-    }
-
-    .post-list-grid {
-        grid-template-columns: 1fr; /* Mobilde karolar tek sütun */
-    }
-
-    .slider-container {
-        padding: 25px 15px;
-    }
-}
-
-
-/* --- MOBİL VE RENK DÜZELTMELERİ --- */
-
-/* Ana Sayfa'nın sürekli siyah kalmasını önler, yerine turuncu alt çizgi yapar */
-.main-nav li a.active {
-    background-color: transparent !important;
-    color: #333 !important;
-    font-weight: bold;
-    border-bottom: 2px solid #e26a2c;
-}
-
-/* --- EKG NAVİGASYON: SIFIR HATA PAKETİ --- */
-
-/* Tüm cihazlarda geçerli temel stil */
+/* 1. TEMEL NAVİGASYON YAPISI (Tüm Cihazlar) */
 .main-nav {
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     background-color: #fdfaf6;
     position: sticky;
     top: 0;
-    z-index: 99999;
+    z-index: 10000;
     width: 100%;
 }
 
@@ -303,20 +252,22 @@ footer {
     margin: 0;
     padding: 0;
     list-style: none !important;
-    display: flex;
+    display: flex; /* Masaüstünde yan yana */
+    justify-content: center;
 }
 
 .nav-list li {
+    position: relative; /* TABLETTEKİ SOLA KAYMA SORUNUNU ÇÖZEN KRİTİK SATIR */
     list-style: none !important;
 }
 
-/* Linklerin rengini ve alt çizgisini sabitleyelim (Mor olmasınlar) */
 .nav-list li a {
     text-decoration: none !important;
     color: #333 !important;
     text-transform: none;
     font-size: 1rem;
     display: block;
+    padding: 15px 25px;
     transition: 0.3s;
 }
 
@@ -326,51 +277,60 @@ footer {
 
 /* --- MASAÜSTÜ VE TABLET (769px ve Üstü) --- */
 @media (min-width: 769px) {
-    .mobile-menu-btn { display: none !important; } /* Menü yazısını gizle */
+    .mobile-menu-btn { 
+        display: none !important; 
+    }
     
-    .nav-list {
-        display: flex !important; /* Menüyü her zaman göster */
-        justify-content: center;
-        flex-direction: row;
-    }
-
-    .nav-list li a {
-        padding: 15px 25px;
-    }
-
-    /* Tablet/PC Dropdown */
     .dropdown-content {
         display: none;
-        position: absolute;
+        position: absolute; /* Tam olarak Koleksiyonlar butonunun altına hizalanır */
         top: 100%;
         left: 0;
         background-color: #333;
         min-width: 220px;
         box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        flex-direction: column;
+        padding: 0;
     }
     
-    .dropdown.is-open .dropdown-content { display: flex; flex-direction: column; }
+    .dropdown.is-open .dropdown-content { 
+        display: flex !important; 
+    }
 }
 
 /* --- MOBİL (768px ve Altı) --- */
 @media (max-width: 768px) {
+    /* Burger Butonu Tasarımı */
     .mobile-menu-btn {
-        display: flex !important; /* SADECE MOBİLDE GÖSTER */
+        display: flex !important;
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        padding: 12px;
         cursor: pointer;
+        background: none;
+        border: none;
     }
 
-    .mobile-menu-btn span { width: 25px; height: 2px; background: #333; margin: 2px 0; }
-    .mobile-menu-btn small { font-size: 0.7rem; color: #333; }
+    .mobile-menu-btn span { 
+        width: 25px; 
+        height: 2px; 
+        background: #333; 
+        margin: 2px 0; 
+    }
 
-    /* Ana Listeyi Mobilde Başlangıçta Gizle */
+    .mobile-menu-btn small { 
+        font-size: 0.6rem; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+    }
+
+    /* ANA LİSTE: Mobilde Başlangıçta Gizli ve Dikey */
     .nav-list {
-        display: none; /* KRİTİK: Kesinlikle gizli başlar */
-        flex-direction: column;
+        display: none; /* Burger basılana kadar kesinlikle gizli */
+        flex-direction: column !important; /* YAN YANA DİZİLİMİ KÖKTEN ENGELLER */
         width: 100%;
         background-color: #fdfaf6;
+        border-top: 1px solid #333;
         text-align: center;
     }
 
@@ -379,24 +339,38 @@ footer {
         display: flex !important;
     }
 
-    .nav-list li { width: 100%; border-top: 1px solid #eee; }
-    .nav-list li a { padding: 15px; }
+    .nav-list li { 
+        width: 100%; 
+        border-bottom: 1px solid #eee; 
+    }
 
-    /* Mobil Alt Menü (Koleksiyonlar) */
-    .dropdown-content {
-        display: none;
-        background-color: #333;
+    .nav-list li a { 
+        padding: 15px !important; 
         width: 100%;
     }
 
+    /* MOBİL ALT MENÜ (Koleksiyonlar) */
+    .dropdown-content {
+        display: none; /* Başlangıçta gizli */
+        background-color: #333;
+        width: 100%;
+        padding: 0;
+        flex-direction: column !important;
+    }
+
     .dropdown.is-open .dropdown-content {
-        display: block !important;
+        display: flex !important; /* Koleksiyonlar'a basınca açılır */
     }
 }
 
-/* Siyah Kutu Linkleri */
+/* Ortak Alt Menü Link Stili */
 .dropdown-content li a {
     color: #fdfaf6 !important;
     font-size: 0.9rem;
-    padding: 12px !important;
+    padding: 12px 20px !important;
+    border-bottom: 1px solid #444;
+}
+
+.dropdown-content li:last-child a {
+    border-bottom: none;
 }
