@@ -286,7 +286,9 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* --- EKG NAVİGASYON: NİHAİ SİSTEM --- */
+/* --- EKG MOBİL UYUMLU NAVİGASYON --- */
+
+.mobile-menu-btn { display: none; } /* Masaüstünde butonu gizle */
 
 .main-nav {
     border-top: 1px solid #333;
@@ -294,7 +296,7 @@ footer {
     background-color: #fdfaf6;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 10000;
     width: 100%;
 }
 
@@ -304,13 +306,9 @@ footer {
     list-style: none !important;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap; /* Mobilde sığmazsa alt satıra geçebilsin */
 }
 
-.nav-list li {
-    position: relative;
-    list-style: none !important;
-}
+.nav-list li { position: relative; }
 
 .nav-list li a {
     display: block;
@@ -320,60 +318,64 @@ footer {
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
-    transition: 0.3s;
 }
 
-.nav-list li a:hover, .nav-list li a.active {
-    color: #e26a2c !important;
-}
+/* Hover ve Aktif Sayfa Rengi */
+.nav-list li a:hover, .nav-list li a.active { color: #e26a2c !important; }
 
-/* --- DROPDOWN (AÇILIR KUTU) --- */
-.dropdown-content {
-    display: none; /* Varsayılan kapalı */
-    background-color: #333;
-    list-style: none !important;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
+/* TELEFON AYARI (768px altı) */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        gap: 4px;
+    }
 
-/* MASAÜSTÜ İÇİN: Havada süzülen menü */
-@media (min-width: 769px) {
-    .dropdown-content {
+    .mobile-menu-btn span {
+        width: 25px;
+        height: 2px;
+        background-color: #333;
+    }
+
+    .nav-list {
+        display: none; /* Varsayılan kapalı */
+        flex-direction: column;
+        width: 100%;
+        background-color: #fdfaf6;
         position: absolute;
         top: 100%;
         left: 0;
-        min-width: 220px;
-        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        border-bottom: 1px solid #333;
     }
-}
 
-/* MOBİL VE TABLET İÇİN: Navigasyonun altına eklenen satır */
-@media (max-width: 768px) {
-    .nav-list {
-        justify-content: center; /* Mobilde de ortalı kalsın */
-    }
-    
-    .dropdown {
-        width: 100%; /* Koleksiyonlar satırı tam genişlik kaplasın */
-        text-align: center;
-    }
+    .nav-list.is-active { display: flex; } /* JS ile açılır */
+
+    .nav-list li { width: 100%; text-align: center; }
     
     .dropdown-content {
-        position: static; /* Havada süzülme, altına eklen */
+        position: static !important;
         display: none;
+        background-color: #333;
+        width: 100%;
     }
+
+    .dropdown.is-open .dropdown-content { display: block !important; }
 }
 
-/* MENÜ AÇILDIĞINDA */
-.dropdown.is-open .dropdown-content {
-    display: block !important;
+/* MASAÜSTÜ DROPDOWN */
+@media (min-width: 769px) {
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        min-width: 220px;
+    }
+    .dropdown.is-open .dropdown-content { display: flex; flex-direction: column; }
 }
 
-.dropdown-content li a {
-    color: #fdfaf6 !important;
-    padding: 12px 20px !important;
-    text-transform: none !important;
-    font-size: 0.9rem;
-    border-bottom: 1px solid #444;
-}
+.dropdown-content li a { color: #fdfaf6 !important; padding: 12px !important; }
