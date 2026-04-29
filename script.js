@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const dropbtn = document.querySelector('.dropbtn');
 
-    // 1. Burger Buton: Ana Menüyü Aç/Kapat
+    // Mobil Burger Buton Kontrolü
     if (mobileBtn) {
         mobileBtn.onclick = function(e) {
             e.stopPropagation();
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 2. Koleksiyonlar Buton: Alt Menüyü Aç/Kapat
+    // Koleksiyonlar Buton Kontrolü
     if (dropbtn) {
         dropbtn.onclick = function(e) {
             e.preventDefault();
@@ -21,12 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 3. Dışarı Tıklayınca Her Şeyi Kapat (Temizlik)
-    document.addEventListener('click', (e) => {
-        // Eğer tıklanan yer menünün kendisi değilse
+    // Herhangi bir yere basınca menüleri kapat
+    document.onclick = function(e) {
         if (navList && !navList.contains(e.target) && !mobileBtn.contains(e.target)) {
             navList.classList.remove('is-active');
-            dropdown.classList.remove('is-open'); // Koleksiyonları da kapat
+            dropdown.classList.remove('is-open');
         }
-    });
+    };
 });

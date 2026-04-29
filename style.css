@@ -286,81 +286,59 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* --- EKG NAVİGASYON: MOBİL ODAKLI ÇÖZÜM --- */
+/* --- EKG NAVİGASYON: SIFIR HATA PAKETİ --- */
 
-/* 1. MASAÜSTÜ & TABLET (PC düzenini koruyan kısım) */
+/* Tüm cihazlarda geçerli temel stil */
 .main-nav {
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     background-color: #fdfaf6;
     position: sticky;
     top: 0;
-    z-index: 10000;
+    z-index: 99999;
+    width: 100%;
 }
 
 .nav-list {
-    display: flex;
-    justify-content: center;
-    list-style: none !important;
     margin: 0;
     padding: 0;
+    list-style: none !important;
+    display: flex;
 }
 
-/* 2. SADECE MOBİL (768px ve Altı) */
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: flex !important; /* Burger butonunu zorla göster */
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-        cursor: pointer;
-    }
-
-    /* ANA MENÜ LİSTESİ: Mobilde başlangıçta kapalı ve DİKEY */
-    .nav-list {
-        display: none; /* İlk açılışta kapalı */
-        flex-direction: column !important; /* Linkleri alt alta diz */
-        width: 100%;
-        background-color: #fdfaf6;
-        border-top: 1px solid #333;
-    }
-
-    /* Burger'e basınca bu devreye girer */
-    .nav-list.is-active {
-        display: flex !important;
-    }
-
-    .nav-list li {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid #eee;
-    }
-
-    /* KOLEKSİYONLAR ALT MENÜ (Siyah Kutu) */
-    .dropdown-content {
-        display: none !important; /* Varsayılan kapalı */
-        flex-direction: column !important; /* İÇİNDEKİLERİ ALT ALTA DİZ */
-        background-color: #333;
-        width: 100%;
-        padding: 0;
-        position: static !important; /* Navigasyonun içine gömül */
-    }
-
-    /* Koleksiyonlar'a basınca bu devreye girer */
-    .dropdown.is-open .dropdown-content {
-        display: flex !important;
-    }
-
-    .dropdown-content li a {
-        color: #fdfaf6 !important;
-        padding: 15px !important;
-        font-size: 0.95rem;
-    }
+.nav-list li {
+    list-style: none !important;
 }
 
-/* MASAÜSTÜ İÇİN DROPDOWN AYARI */
+/* Linklerin rengini ve alt çizgisini sabitleyelim (Mor olmasınlar) */
+.nav-list li a {
+    text-decoration: none !important;
+    color: #333 !important;
+    text-transform: none;
+    font-size: 1rem;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-list li a:hover, .nav-list li a.active {
+    color: #e26a2c !important;
+}
+
+/* --- MASAÜSTÜ VE TABLET (769px ve Üstü) --- */
 @media (min-width: 769px) {
-    .mobile-menu-btn { display: none !important; }
+    .mobile-menu-btn { display: none !important; } /* Menü yazısını gizle */
+    
+    .nav-list {
+        display: flex !important; /* Menüyü her zaman göster */
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .nav-list li a {
+        padding: 15px 25px;
+    }
+
+    /* Tablet/PC Dropdown */
     .dropdown-content {
         display: none;
         position: absolute;
@@ -368,7 +346,57 @@ footer {
         left: 0;
         background-color: #333;
         min-width: 220px;
-        flex-direction: column;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    .dropdown.is-open .dropdown-content { display: flex; }
+    
+    .dropdown.is-open .dropdown-content { display: flex; flex-direction: column; }
+}
+
+/* --- MOBİL (768px ve Altı) --- */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex !important; /* SADECE MOBİLDE GÖSTER */
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .mobile-menu-btn span { width: 25px; height: 2px; background: #333; margin: 2px 0; }
+    .mobile-menu-btn small { font-size: 0.7rem; color: #333; }
+
+    /* Ana Listeyi Mobilde Başlangıçta Gizle */
+    .nav-list {
+        display: none; /* KRİTİK: Kesinlikle gizli başlar */
+        flex-direction: column;
+        width: 100%;
+        background-color: #fdfaf6;
+        text-align: center;
+    }
+
+    /* Burger basılınca açılan sınıf */
+    .nav-list.is-active {
+        display: flex !important;
+    }
+
+    .nav-list li { width: 100%; border-top: 1px solid #eee; }
+    .nav-list li a { padding: 15px; }
+
+    /* Mobil Alt Menü (Koleksiyonlar) */
+    .dropdown-content {
+        display: none;
+        background-color: #333;
+        width: 100%;
+    }
+
+    .dropdown.is-open .dropdown-content {
+        display: block !important;
+    }
+}
+
+/* Siyah Kutu Linkleri */
+.dropdown-content li a {
+    color: #fdfaf6 !important;
+    font-size: 0.9rem;
+    padding: 12px !important;
 }
