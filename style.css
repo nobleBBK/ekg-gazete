@@ -283,56 +283,70 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* NAVİGASYON ANA DÜZEN */
-/* Navigasyonun kendi içinde kaymasını sağlar */
+/* --- EKG NAVİGASYON: NİHAİ ESTETİK --- */
+
 .main-nav {
-    overflow-x: auto; /* Sadece navigasyon çubuğu yatay kayabilsin */
-    overflow-y: visible; /* Dropdown aşağı doğru görünebilsin */
-    -webkit-overflow-scrolling: touch; /* Mobilde pürüzsüz kaydırma */
-    scrollbar-width: none; /* Firefox için scrollbar gizle */
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    background-color: #fdfaf6;
+    margin: 20px 0;
+    overflow-x: auto; /* Mobilde kaydırmayı sağlar */
+    overflow-y: visible; /* Açılır menü kesilmez */
+    -webkit-overflow-scrolling: touch;
 }
 
-.main-nav::-webkit-scrollbar {
-    display: none; /* Chrome/Safari için scrollbar gizle (daha temiz durur) */
-}
-
+/* Noktaları siler ve elemanları ortalar */
 .nav-list {
+    list-style: none !important; /* Noktaları kesin siler */
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-wrap: nowrap; /* Elemanların alt satıra geçmesini engeller */
-    white-space: nowrap; /* Metinlerin tek satırda kalmasını sağlar */
-    justify-content: flex-start; /* Elemanları sola yaslar (kaydırma için şart) */
-    padding: 0 15px; /* Kenarlardan çok az boşluk */
+    justify-content: center; /* Masaüstü ve tablette ortalar */
+    flex-wrap: nowrap;
 }
 
+.nav-list li {
+    list-style: none !important;
+}
 
 .nav-list > li > a {
     display: block;
-    padding: 15px 20px;
+    padding: 15px 25px;
     color: #333;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
-/* DROPDOWN - GİZLİ KUTU AYARI */
-.dropdown {
-    position: relative; /* Alt menü buna göre hizalanır */
+/* MOBİL AYAR: Ekran çok daralınca sola yasla ki kaysın */
+@media (max-width: 600px) {
+    .nav-list {
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
 }
 
+/* DROPDOWN (Açılır Menü) AYARI */
 .dropdown-content {
-    display: none; /* Varsayılan olarak kesin gizli */
+    display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
     background-color: #333;
     min-width: 220px;
-    z-index: 9999;
-    list-style: none;
+    z-index: 10000;
+    list-style: none !important;
     padding: 0;
     margin: 0;
-    flex-direction: column; /* Elemanları alt alta zorlar */
+    top: 100%;
+    left: 0;
+    flex-direction: column;
 }
+
+.dropdown.open .dropdown-content {
+    display: flex;
+}
+
 
 /* Alt Menü Linkleri */
 .dropdown-content li {
