@@ -4,24 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const dropbtn = document.querySelector('.dropbtn');
 
-    // Mobil Burger Buton Kontrolü
+    // 1. Burger Buton Tetikleyici
     if (mobileBtn) {
         mobileBtn.onclick = function(e) {
             e.stopPropagation();
             navList.classList.toggle('is-active');
+            console.log("Burger Basıldı");
         };
     }
 
-    // Koleksiyonlar Buton Kontrolü
+    // 2. Koleksiyonlar Buton Tetikleyici
     if (dropbtn) {
         dropbtn.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             dropdown.classList.toggle('is-open');
+            console.log("Koleksiyonlar Basıldı");
         };
     }
 
-    // Herhangi bir yere basınca menüleri kapat
+    // 3. Temizlik: Dışarı basınca kapat
     document.onclick = function(e) {
         if (navList && !navList.contains(e.target) && !mobileBtn.contains(e.target)) {
             navList.classList.remove('is-active');
