@@ -34,7 +34,7 @@ header h1 {
     /* --- TAŞMAYI ÖNLEYEN KRİTİK AYARLAR --- */
     letter-spacing: 8px;
     /* En sondaki harfin sağındaki 8px boşluğu telafi edip bloğu tam merkeze çeker */
-    margin-right: -12px; 
+    margin-right: -16px; 
     padding: 0;
 }
 
