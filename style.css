@@ -282,112 +282,76 @@ footer {
     font-weight: bold;
     border-bottom: 2px solid #e26a2c;
 }
+/* --- EKG NAVİGASYON KESİN ÇÖZÜM --- */
 
-/* --- EKG EVRENSEL SIFIRLAMA --- */
-
-/* --- ANA NAVİGASYON (YAPIŞKAN & ÇİZGİLİ) --- */
 .main-nav {
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     background-color: #fdfaf6;
-    position: sticky; /* Sayfa kaysa da en üstte yapışık kalır */
+    position: sticky;
     top: 0;
-    z-index: 9999;
-    width: 100%;
-    /* Mobilde kaydırma, masaüstünde sabit durma ayarı */
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
-
-.main-nav::-webkit-scrollbar {
-    display: none; /* Kaydırma çubuğunu gizler */
+    z-index: 99999; /* Her şeyin üstünde */
+    overflow-x: auto; /* Mobilde kaydırma */
+    overflow-y: visible !important; /* Menünün aşağı sarkmasına izin ver */
 }
 
 .nav-list {
     display: flex;
-    justify-content: center; /* Masaüstünde ortalar */
+    justify-content: center; /* Masaüstünde ortala */
     list-style: none !important;
     margin: 0;
     padding: 0;
-    white-space: nowrap;
 }
 
-.nav-list li {
-    list-style: none !important;
-    position: relative;
-}
+.nav-list li { position: relative; list-style: none !important; }
 
-/* Linklerin Görünümü ve Hover (Turuncu) Efekti */
+/* Menü Başlıkları */
 .nav-list li a {
     display: block;
-    padding: 15px 25px;
+    padding: 15px 20px;
     color: #333;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.85rem;
-    letter-spacing: 1px;
-    transition: color 0.3s ease; /* Renk geçişini yumuşatır */
 }
 
-/* Üzerine gelince o meşhur turuncuya döner */
-.nav-list li a:hover,
-.nav-list li a.active {
-    color: #e26a2c !important; 
-}
+/* SADECE ÜZERİNE GELİNCE TURUNCU OLSUN (PC İÇİN) */
+.nav-list li a:hover { color: #e26a2c !important; }
 
-/* --- AÇILIR MENÜ (DROPDOWN) --- */
+/* --- AÇILIR MENÜ (GİZLİ KUTU) --- */
 .dropdown-content {
-    display: none; /* Başlangıçta gizli */
+    display: none !important; /* VARSAYILAN OLARAK GİZLİ */
     position: absolute;
     top: 100%;
     left: 0;
     background-color: #333;
     min-width: 200px;
-    z-index: 10000;
-    
-}
-
-/* JS 'open' sınıfı eklediğinde kutuyu göster */
-.dropdown.open .dropdown-content {
-    display: flex !important;
+    z-index: 100000;
+    padding: 0;
+    margin: 0;
+    list-style: none !important;
     flex-direction: column;
 }
 
-.dropdown-content li {
-    width: 100%;
-    border-bottom: 1px solid #444;
+/* !!! İŞTE SİHİRLİ SATIR !!! */
+/* JS 'active-menu' eklediğinde bu kural her şeyi ezer ve gösterir */
+.active-menu .dropdown-content {
+    display: flex !important;
 }
 
 .dropdown-content li a {
     color: #fdfaf6 !important;
     padding: 12px 20px !important;
-    text-transform: none !important;
-    font-size: 0.9rem;
     text-align: left;
+    text-transform: none !important;
 }
 
-.dropdown-content li a:hover {
-    background-color: #444;
-    color: #e26a2c !important; /* Alt menüde de turuncu vurgu */
-}
-
-/* --- MOBİL ÖZEL AYARI --- */
+/* MOBİL İÇİN SOLA YASLAMA VE KAYDIRMA */
 @media (max-width: 768px) {
-    .nav-list {
-        justify-content: flex-start; /* Mobilde sola yaslar ki kaysın */
-        padding: 0 10px;
-    }
+    .nav-list { justify-content: flex-start; padding: 0 10px; }
 }
-/* Eğer dropdown 'open' sınıfını almışsa, içeriği mutlaka göster */
-.dropdown.open .dropdown-content {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    /* Tıklanabilir olmasını sağlar */
-}
+
+
 
 
 
