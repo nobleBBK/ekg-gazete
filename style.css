@@ -356,6 +356,43 @@ footer {
     display: flex !important;
 }
 
+/* --- MOBİL NAVİGASYON KAYDIRMA --- */
+
+@media (max-width: 768px) {
+    .main-nav {
+        /* Yatayda kaymaya izin ver, dikeyde açılır menüyü saklama */
+        overflow-x: auto; 
+        overflow-y: visible;
+        
+        /* Mobilde pürüzsüz kaydırma hissi */
+        -webkit-overflow-scrolling: touch;
+        
+        /* Çirkin scroll bar çizgisini gizle */
+        scrollbar-width: none; 
+    }
+
+    .main-nav::-webkit-scrollbar {
+        display: none; /* Chrome ve Safari'de scroll barı gizler */
+    }
+
+    .nav-list {
+        /* Elemanları sola yasla ki kaydırma başlasın */
+        justify-content: flex-start !important;
+        
+        /* Elemanların alt satıra geçmesini engelle, tek sıra diz */
+        flex-wrap: nowrap !important;
+        
+        /* Sağdan soldan küçük bir nefes payı bırak */
+        padding: 0 15px;
+    }
+
+    .nav-list li a {
+        /* Kelimelerin bölünmesini engelle */
+        white-space: nowrap;
+        padding: 15px 18px; /* Mobilde parmak mesafesi için ideal */
+    }
+}
+
 
 
 /* GÖSTERME KOMUTLARI */
