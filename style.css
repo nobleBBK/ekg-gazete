@@ -20,12 +20,12 @@ html, body {
    ============================================================ */
 header {
     text-align: center;
-    padding: 20px 20px 20px;
+    padding: 10px 20px 10px;
     background-color: #fdfaf6;
 }
 
 header h1 {
-    font-size: 6rem;
+    font-size: 4.5rem;
     margin: 0;
     font-weight: bold;
     position: relative;
