@@ -344,17 +344,15 @@ footer {
     top: 100%;
     left: 0;
     background-color: #333;
-    min-width: 220px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
-    padding: 0;
-    margin: 0;
-    list-style: none !important;
-    flex-direction: column;
+    min-width: 200px;
+    z-index: 10000;
+    
 }
 
 /* JS 'open' sınıfı eklediğinde kutuyu göster */
 .dropdown.open .dropdown-content {
     display: flex !important;
+    flex-direction: column;
 }
 
 .dropdown-content li {
@@ -384,7 +382,7 @@ footer {
 }
 
 
-.dropdown-content{display: flex !important;}
+
 
 
 

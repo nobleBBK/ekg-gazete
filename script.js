@@ -1,26 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.onload = function() {
     const dropdown = document.querySelector('.dropdown');
     const dropbtn = document.querySelector('.dropbtn');
 
-    if (dropbtn) {
-        // Tıklama olayını kontrol et
-        dropbtn.addEventListener('click', function(e) {
+    if (dropbtn && dropdown) {
+        dropbtn.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            // Açıksa kapat, kapalıysa aç (Gerçek Toggle)
-            if (dropdown.classList.contains('open')) {
-                dropdown.classList.remove('open');
-            } else {
-                dropdown.classList.add('open');
-            }
-        });
+            // Menüyü aç/kapat
+            dropdown.classList.toggle('open');
+        };
     }
 
-    // Menü dışındaki boşluğa basınca kapat
-    document.addEventListener('click', function(e) {
+    // Boşluğa basınca kapat
+    document.onclick = function(e) {
         if (dropdown && !dropdown.contains(e.target)) {
             dropdown.classList.remove('open');
         }
-    });
-});
+    };
+};
