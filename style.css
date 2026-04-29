@@ -1,4 +1,16 @@
 /* --- GENEL AYARLAR & TİPOGRAFİ --- */
+html, body {
+    overflow-x: hidden; /* Sağa doğru taşmaları kesinlikle engeller */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit; /* Genişlik hesaplamalarını daha tutarlı yapar */
+}
+
 * {
     box-sizing: border-box; /* Kutu boyutlarını düzene sokar */
 }
@@ -373,24 +385,29 @@ header, .main-nav, .nav-list {
     position: relative !important;
 }
 
-/* 2. Dikey ekran (Portrait) özel ayarı */
+/* --- MOBİL MENÜ YERLEŞİM DÜZELTMESİ --- */
 @media (max-width: 768px) {
     .dropdown-content {
-        display: none; /* JS 'open' ekleyene kadar gizli */
-        position: fixed !important; /* Absolute yerine FIXED: Ekranın neresinde olursan ol görünsün */
-        top: 60px !important; /* Navigasyonun hemen altı (bu değeri sitene göre artırıp azaltabilirsin) */
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 90% !important;
+        display: none;
+        position: absolute !important; /* FIXED yerine ABSOLUTE: Butona sadık kalır */
+        top: 100% !important; /* Butonun hemen altından başlar */
+        left: 0 !important; /* Butonun soluna yaslanır */
+        width: 200px !important; /* Sabit ve makul bir genişlik */
         background-color: #333 !important;
-        z-index: 99999 !important; /* Her şeyin ama her şeyin üzerinde durur */
+        z-index: 99999 !important;
         flex-direction: column !important;
-        border: 1px solid #444 !important;
+        transform: none !important; /* Sağa sola kaydıran komutları sıfırladık */
     }
 
-    /* JS komutu geldiğinde görünür yap */
     .dropdown.open .dropdown-content {
         display: flex !important;
     }
+
+    /* Menü açılınca navigasyonun onu kesmesini önler */
+    .main-nav, .nav-list, .dropdown {
+        overflow: visible !important;
+    }
+}
+
 }
 

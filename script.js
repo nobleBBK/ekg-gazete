@@ -6,13 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
         dropbtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            // Menüyü aç/kapat
-            dropdown.classList.toggle('open');
-            console.log("Menü durumu: " + dropdown.classList.contains('open')); // Test için
+            dropdown.classList.toggle('open'); // Varsa kaldırır, yoksa ekler
         });
     }
 
-    // Boşluğa tıklayınca kapat
     document.addEventListener('click', (e) => {
         if (dropdown && !dropdown.contains(e.target)) {
             dropdown.classList.remove('open');
