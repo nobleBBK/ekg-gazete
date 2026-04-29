@@ -278,3 +278,46 @@ footer {
     header h1 { font-size: 2.8rem; }
     .post-list-grid { grid-template-columns: 1fr; }
 }
+
+/* --- LİNK ESTETİĞİ VE SIFIRLAMA --- */
+
+/* Tüm yazı kartı içindeki linklerin alt çizgisini ve varsayılan rengini kaldırıyoruz */
+.post-card a, 
+.post-title-link, 
+.read-more {
+    text-decoration: none !important; /* Alt çizgiyi her koşulda siler */
+    outline: none;
+}
+
+/* Başlıkların rengini sabitleyelim (Mor olmasını engeller) */
+.post-title-link h4 {
+    color: #333 !important;
+    margin: 15px 0;
+    transition: color 0.3s ease;
+}
+
+/* Kartın üzerine gelince başlık turuncuya dönsün */
+.post-card:hover .post-title-link h4 {
+    color: #e26a2c !important;
+}
+
+/* "Devamını Oku" bağlantısını tasarımın imzası yapalım */
+.read-more {
+    color: #e26a2c !important; /* Senin o karakteristik turuncun */
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Devamını Oku üzerine gelince minik bir hareket kazansın */
+.read-more:hover {
+    opacity: 0.8;
+    transform: translateX(5px); /* Sağa doğru hafifçe süzülür */
+}
+
+/* Ziyaret edilmiş linklerin renginin değişmesini (morarmasını) engelle */
+.post-card a:visited {
+    color: inherit;
+}
