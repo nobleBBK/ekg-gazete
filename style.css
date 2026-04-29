@@ -365,22 +365,32 @@ footer {
     padding: 15px 10px; /* Dokunma alanını biraz büyüttük */
 }
 
-/* --- MOBİL DİKEY EKRAN CERRAHİ MÜDAHALE --- */
+/* --- DİKEY EKRAN NÜKLEER ÇÖZÜM --- */
 
-@media (max-width: 480px) { /* Sadece dikey telefonlar için */
+/* 1. Menünün kesilmesini önlemek için tüm üst yolları açıyoruz */
+header, .main-nav, .nav-list {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* 2. Dikey ekran (Portrait) özel ayarı */
+@media (max-width: 768px) {
     .dropdown-content {
-        left: auto !important;
-        right: 0 !important; /* Menü sağa yaslansın ki ekrandan taşmasın */
-        width: 90vw !important; /* Ekranın %90'ını kaplasın */
-        max-width: 280px; /* Ama çok da devasa olmasın */
-        top: 100% !important;
-        position: absolute !important;
+        display: none; /* JS 'open' ekleyene kadar gizli */
+        position: fixed !important; /* Absolute yerine FIXED: Ekranın neresinde olursan ol görünsün */
+        top: 60px !important; /* Navigasyonun hemen altı (bu değeri sitene göre artırıp azaltabilirsin) */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+        background-color: #333 !important;
+        z-index: 99999 !important; /* Her şeyin ama her şeyin üzerinde durur */
+        flex-direction: column !important;
+        border: 1px solid #444 !important;
+    }
+
+    /* JS komutu geldiğinde görünür yap */
+    .dropdown.open .dropdown-content {
+        display: flex !important;
     }
 }
 
-/* Tıklama alanını garantiye alalım */
-.dropbtn {
-    position: relative;
-    z-index: 10; 
-    padding: 15px 10px; /* Dokunma alanını biraz büyüttük */
-}
