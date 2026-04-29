@@ -215,8 +215,8 @@ main {
 }
 
 .post-card {
-    background: #f4f1ea;
-    border: 1px solid #eee;
+    background: #f7f5f0;
+    border: 1px solid #efebe4;
     padding: 25px;
     display: flex;
     flex-direction: column;
