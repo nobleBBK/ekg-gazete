@@ -29,22 +29,26 @@ header h1 {
     margin: 0;
     letter-spacing: 8px;
     font-weight: bold;
-    position: relative; /* Bu satırı eklemeyi unutma */
-    display: inline-block; /* Çizginin logoyu ortalaması için */
+    position: relative;
+    display: inline-block;
+    /* Sağdaki taşmayı engellemek için son harfin boşluğunu telafi ediyoruz */
+    padding-right: 0; 
 }
 
-/* Nabız Çizgisi */
+/* Gerçekçi Nabız Çizgisi */
 header h1::after {
     content: "";
     display: block;
-    width: 100%;
-    height: 3px;
-    background: #e26a2c; /* İmza turuncun */
-    margin: 10px auto 0;
-    /* Animasyon emri */
-    animation: ekg-pulse 2.5s infinite ease-in-out;
+    /* Taşmayı önlemek için genişliği tam %100 değil, hafif içeride tutuyoruz */
+    width: calc(100% - 8px); 
+    height: 2px;
+    background: #e26a2c;
+    margin: 12px auto 0;
+    /* 5 saniyelik çok sakin bir döngü: Stoacı Nabız */
+    animation: real-heartbeat 5s infinite ease-in-out;
     transform-origin: center;
 }
+
 
 
 header h1 a { text-decoration: none; color: inherit; }
@@ -402,9 +406,13 @@ a, a:visited, a:hover, a:active {
     text-decoration: underline !important;
 }
 
-/* EKG NABIZ ANİMASYONU */
-@keyframes ekg-pulse {
-    0% { transform: scaleX(0.2); opacity: 0.3; }
-    50% { transform: scaleX(1); opacity: 1; }
-    100% { transform: scaleX(0.2); opacity: 0.3; }
+/* GERÇEKÇİ STOACI NABIZ ANİMASYONU */
+@keyframes real-heartbeat {
+    0% { transform: scaleX(0.1); opacity: 0.2; }    /* Başlangıç: Sessizlik */
+    5% { transform: scaleX(1.05); opacity: 1; }    /* LUB: Ana Atış */
+    8% { transform: scaleX(0.8); opacity: 0.6; }     /* Ara Geçiş */
+    12% { transform: scaleX(1.1); opacity: 1; }     /* DUB: Artçı Atış */
+    18% { transform: scaleX(0.1); opacity: 0.2; }    /* Sönümlenme */
+    100% { transform: scaleX(0.1); opacity: 0.2; }  /* Uzun Bekleyiş: Dinginlik */
 }
+
