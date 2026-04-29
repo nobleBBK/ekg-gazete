@@ -286,7 +286,12 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* --- EKG NAVİGASYON: RAFİNE VERSİYON --- */
+/* --- EKG NAVİGASYON: KESİN VE TEMİZ DÜZEN --- */
+
+/* 1. EVRENSEL AYARLAR: Butonu varsayılan olarak her yerde gizle */
+.mobile-menu-btn {
+    display: none !important;
+}
 
 .main-nav {
     border-top: 1px solid #333;
@@ -295,6 +300,7 @@ footer {
     position: sticky;
     top: 0;
     z-index: 10000;
+    width: 100%;
 }
 
 .nav-list {
@@ -307,15 +313,13 @@ footer {
 
 .nav-list li { position: relative; }
 
-/* Linklerin görünümü - Büyük harf zorlamasını kaldırdık */
 .nav-list li a {
     display: block;
     padding: 15px 25px;
     color: #333;
     text-decoration: none;
-    text-transform: none; /* ARTIK YAZDIĞIN GİBİ GÖRÜNECEK */
+    text-transform: none; /* Yazdığın gibi görünür */
     font-size: 1rem;
-    letter-spacing: 0.5px;
     transition: 0.3s;
 }
 
@@ -323,44 +327,7 @@ footer {
     color: #e26a2c !important;
 }
 
-/* --- MOBİL AYARLAR (Görseldeki hatayı çözen kısım) --- */
-@media (max-width: 768px) {
-    .nav-list {
-        display: none; 
-        flex-direction: column; /* LİSTEYİ ALT ALTA DİZ */
-        width: 100%;
-        background-color: #fdfaf6;
-    }
-
-    .nav-list.is-active { display: flex; }
-
-    /* Alt menüyü (Siyah kutu) dikey yapalım */
-    .dropdown-content {
-        display: none;
-        flex-direction: column !important; /* LİNKLERİ MUTLAK SURETLE ALT ALTA DİZ */
-        background-color: #333;
-        width: 100%;
-        padding: 0;
-    }
-
-    .dropdown.is-open .dropdown-content {
-        display: flex !important; /* Açılınca dikey olarak göster */
-    }
-
-    .dropdown-content li {
-        width: 100%;
-        border-bottom: 1px solid #444;
-    }
-
-    .dropdown-content li a {
-        color: #fdfaf6 !important;
-        padding: 15px !important;
-        text-align: center; /* Mobilde ortalı daha şık durur */
-        font-size: 0.95rem;
-    }
-}
-
-/* --- MASAÜSTÜ İÇİN EKSTRA ZARAFET --- */
+/* 2. MASAÜSTÜ & TABLET İÇİN DROPDOWN */
 @media (min-width: 769px) {
     .dropdown-content {
         display: none;
@@ -368,8 +335,55 @@ footer {
         top: 100%;
         left: 0;
         background-color: #333;
-        min-width: 220px;
+        min-width: 200px;
         flex-direction: column;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .dropdown.is-open .dropdown-content { display: flex; }
+    .dropdown.is-open .dropdown-content {
+        display: flex !important;
+    }
 }
+
+/* 3. SADECE MOBİL (768px ve ALTI) */
+@media (max-width: 768px) {
+    /* Menü butonunu sadece burada göster */
+    .mobile-menu-btn {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .mobile-menu-btn span { width: 25px; height: 2px; background: #333; margin: 2px 0; }
+    .mobile-menu-btn small { font-size: 0.6rem; text-transform: uppercase; }
+
+    /* Menü Listesi: Mobilde VARSAYILAN OLARAK GİZLİ */
+    .nav-list {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        background-color: #fdfaf6;
+        border-top: 1px solid #333;
+    }
+
+    /* JS 'is-active' eklediğinde göster */
+    .nav-list.is-active {
+        display: flex !important;
+    }
+
+    .nav-list li { width: 100%; text-align: center; border-bottom: 1px solid #eee; }
+
+    /* Alt Menü (Koleksiyonlar) */
+    .dropdown-content {
+        display: none;
+        background-color: #333;
+        width: 100%;
+    }
+
+    .dropdown.is-open .dropdown-content {
+        display: block !important;
+    }
+}
+
+.dropdown-content li a { color: #fdfaf6 !important; padding: 12px !important; }

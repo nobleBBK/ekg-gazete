@@ -4,15 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const dropbtn = document.querySelector('.dropbtn');
 
-    // Mobil ana menüyü aç/kapat
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
+    // MOBİL MENÜ AÇ/KAPAT
+    if (mobileBtn && navList) {
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             navList.classList.toggle('is-active');
         });
     }
 
-    // Koleksiyonlar alt menüsünü aç/kapat
-    if (dropbtn) {
+    // KOLEKSİYONLAR AÇ/KAPAT
+    if (dropbtn && dropdown) {
         dropbtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -20,11 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Boşluğa tıklayınca her şeyi kapat
+    // DIŞARI TIKLAYINCA KAPAT
     document.addEventListener('click', (e) => {
-        if (navList && !navList.contains(e.target) && !mobileBtn.contains(e.target)) {
-            navList.classList.remove('is-active');
-            dropdown.classList.remove('is-open');
+        if (navList && navList.classList.contains('is-active')) {
+            if (!navList.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navList.classList.remove('is-active');
+            }
+        }
+        if (dropdown && dropdown.classList.contains('is-open')) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('is-open');
+            }
         }
     });
 });
