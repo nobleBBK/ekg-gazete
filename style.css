@@ -424,3 +424,76 @@ a, a:visited, a:hover, a:active {
     100% { transform: scaleX(0.1); opacity: 0.2; }  /* Uzun Bekleyiş: Dinginlik */
 }
 
+/* --- YAZI SAYFASI ESTETİĞİ --- */
+.article-container {
+    max-width: 800px;
+    /* Okuma kolaylığı için ideal genişlik */
+    margin: 40px auto;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-tag {
+    color: #e26a2c;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.article-meta {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+.featured-image-container {
+    margin-bottom: 40px;
+    border: 1px solid #333;
+    padding: 10px;
+    background: #fff;
+}
+
+.article-hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.article-body section {
+    margin-bottom: 50px;
+}
+
+.article-body h3 {
+    font-size: 1.6rem;
+    border-bottom: 1px solid #e26a2c;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.article-body p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Ice Breaker Kutuları */
+.ice-breaker-box {
+    background-color: #f4f1ea;
+    border-left: 4px solid #e26a2c;
+    padding: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    color: #444;
+    font-size: 1rem;
+}
