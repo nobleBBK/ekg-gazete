@@ -316,18 +316,46 @@ footer {
     letter-spacing: 1px;           /* Harf arası boşluk */
 }
 
-/* Açılır menü kutusu (Şimdilik sadece gizli durması için) */
+/* AÇILIR KUTU TASARIMI */
 .dropdown-content {
-    display: none; 
+    display: none; /* Başlangıçta gizli */
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #333;
-    min-width: 200px;
+    background-color: #333; /* Koyu gazete siyahı */
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1000;
     padding: 0;
     margin: 0;
     list-style: none !important;
+    flex-direction: column; /* Linkleri alt alta diz */
 }
+
+/* Alt menü linkleri */
+.dropdown-content li {
+    width: 100%;
+    border-bottom: 1px solid #444; /* Linkler arası ince çizgi */
+}
+
+.dropdown-content li a {
+    color: #fdfaf6 !important; /* Kağıt beyazı yazı */
+    padding: 12px 20px !important;
+    text-transform: none !important; /* Koleksiyon isimleri büyük harf olmasın, daha zarif durur */
+    font-size: 0.9rem;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content li a:hover {
+    background-color: #444; /* Üzerine gelince hafif grileşme */
+}
+
+/* JS 'open' sınıfını eklediğinde kutuyu göster */
+.dropdown.open .dropdown-content {
+    display: flex !important;
+}
+
 
 
 /* GÖSTERME KOMUTLARI */
