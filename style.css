@@ -447,7 +447,7 @@ header, .main-nav, .nav-list {
         background-color: #333 !important;
         z-index: 99999 !important;
         flex-direction: column !important;
-        transform: none !important; /* Sağa sola kaydıran komutları sıfırladık */
+        
     }
 
     .dropdown.open .dropdown-content {
