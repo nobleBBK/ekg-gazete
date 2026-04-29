@@ -283,86 +283,52 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* --- EKG NAVİGASYON: NİHAİ ESTETİK --- */
+/* --- EKG MENÜ GÖRSEL TASARIM --- */
 
 .main-nav {
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    background-color: #fdfaf6;
+    border-top: 1px solid #333;    /* Üst çizgi */
+    border-bottom: 1px solid #333; /* Alt çizgi */
+    background-color: #fdfaf6;     /* Sayfa rengiyle uyumlu arka plan */
     margin: 20px 0;
-    overflow-x: auto; /* Mobilde kaydırmayı sağlar */
-    overflow-y: visible; /* Açılır menü kesilmez */
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
 }
 
-/* Noktaları siler ve elemanları ortalar */
 .nav-list {
-    list-style: none !important; /* Noktaları kesin siler */
+    display: flex;
+    justify-content: center;       /* Menüyü tam ortaya toplar */
+    list-style: none !important;   /* Noktaları kesinlikle siler */
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center; /* Masaüstü ve tablette ortalar */
-    flex-wrap: nowrap;
 }
 
 .nav-list li {
-    list-style: none !important;
+    list-style: none !important;   /* Liste elemanı noktalarını siler */
+    position: relative;            /* Açılır menü için merkez noktası */
 }
 
-.nav-list > li > a {
+.nav-list li a {
     display: block;
     padding: 15px 25px;
     color: #333;
-    text-decoration: none;
-    text-transform: uppercase;
+    text-decoration: none;         /* Alt çizgiyi kaldırır */
+    text-transform: uppercase;     /* Büyük harf estetiği */
     font-size: 0.85rem;
-    letter-spacing: 1px;
-    white-space: nowrap;
+    letter-spacing: 1px;           /* Harf arası boşluk */
 }
 
-/* MOBİL AYAR: Ekran çok daralınca sola yasla ki kaysın */
-@media (max-width: 600px) {
-    .nav-list {
-        justify-content: flex-start;
-        padding-left: 10px;
-    }
-}
-
-/* DROPDOWN (Açılır Menü) AYARI */
+/* Açılır menü kutusu (Şimdilik sadece gizli durması için) */
 .dropdown-content {
-    display: none;
+    display: none; 
     position: absolute;
-    background-color: #333;
-    min-width: 220px;
-    z-index: 10000;
-    list-style: none !important;
-    padding: 0;
-    margin: 0;
     top: 100%;
     left: 0;
-    flex-direction: column;
+    background-color: #333;
+    min-width: 200px;
+    padding: 0;
+    margin: 0;
+    list-style: none !important;
 }
 
-.dropdown.open .dropdown-content {
-    display: flex;
-}
-
-
-/* Alt Menü Linkleri */
-.dropdown-content li {
-    width: 100%;
-    border-bottom: 1px solid #444;
-}
-
-.dropdown-content li a {
-    color: #fdfaf6 !important;
-    padding: 12px 20px !important;
-    display: block;
-    text-decoration: none;
-    text-transform: none;
-    font-size: 0.9rem;
-    text-align: left;
-}
 
 /* GÖSTERME KOMUTLARI */
 /* Bilgisayar için: */
