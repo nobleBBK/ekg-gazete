@@ -279,45 +279,66 @@ footer {
     .post-list-grid { grid-template-columns: 1fr; }
 }
 
-/* --- LİNK ESTETİĞİ VE SIFIRLAMA --- */
+/* ============================================================
+   EKG LİNK VE ETKİLEŞİM ESTETİĞİ (UNIFIED DESIGN)
+   ============================================================ */
 
-/* Tüm yazı kartı içindeki linklerin alt çizgisini ve varsayılan rengini kaldırıyoruz */
-.post-card a, 
-.post-title-link, 
-.read-more {
-    text-decoration: none !important; /* Alt çizgiyi her koşulda siler */
+/* 1. EVRENSEL LİNK TEMİZLİĞİ */
+a, a:visited, a:hover, a:active {
+    text-decoration: none !important; /* Alt çizgiyi her yerde yasakla */
+    color: inherit; /* Varsayılan mavi/mor rengi öldür */
     outline: none;
 }
 
-/* Başlıkların rengini sabitleyelim (Mor olmasını engeller) */
+/* 2. MANŞET (FEATURED) ALANI DÜZENLEMESİ */
+.main-featured {
+    cursor: pointer; /* Alanın tamamının etkileşimli olduğunu hissettirir */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-featured h2 {
+    color: #333;
+    transition: color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+/* Manşet üzerine gelince başlık turuncuya dönsün */
+.main-featured:hover h2 {
+    color: #e26a2c;
+}
+
+/* 3. POST CARD (GÜNCEL KÜRASYONLAR) BAŞLIKLARI */
 .post-title-link h4 {
-    color: #333 !important;
+    color: #333;
     margin: 15px 0;
     transition: color 0.3s ease;
 }
 
-/* Kartın üzerine gelince başlık turuncuya dönsün */
-.post-card:hover .post-title-link h4 {
-    color: #e26a2c !important;
+/* Kart üzerine gelince başlık turuncuya dönsün */
+.post-card:hover h4 {
+    color: #e26a2c;
 }
 
-/* "Devamını Oku" bağlantısını tasarımın imzası yapalım */
-.read-more {
-    color: #e26a2c !important; /* Senin o karakteristik turuncun */
+/* 4. "DEVAMINI OKU" BUTONLARI (ORTAK DİL) */
+.read-more, .read-more-btn {
+    color: #e26a2c !important; /* İmza turuncumuz */
     font-weight: bold;
     font-size: 0.9rem;
     display: inline-block;
-    margin-top: 20px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-top: 15px;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-/* Devamını Oku üzerine gelince minik bir hareket kazansın */
-.read-more:hover {
+/* Hover durumunda minik bir süzülme ve ok işareti vurgusu */
+.read-more:hover, .read-more-btn:hover {
     opacity: 0.8;
-    transform: translateX(5px); /* Sağa doğru hafifçe süzülür */
+    transform: translateX(8px); /* Sağa doğru zarif bir kayma */
 }
 
-/* Ziyaret edilmiş linklerin renginin değişmesini (morarmasını) engelle */
-.post-card a:visited {
-    color: inherit;
+/* 5. METİN ÖZETLERİ (P Etiketleri) */
+.main-featured p, .post-card p {
+    color: #555; /* Okunabilirliği yüksek, yumuşak bir siyah */
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
