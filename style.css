@@ -286,9 +286,7 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* --- EKG MOBİL UYUMLU NAVİGASYON --- */
-
-.mobile-menu-btn { display: none; } /* Masaüstünde butonu gizle */
+/* --- EKG NAVİGASYON: RAFİNE VERSİYON --- */
 
 .main-nav {
     border-top: 1px solid #333;
@@ -297,7 +295,6 @@ footer {
     position: sticky;
     top: 0;
     z-index: 10000;
-    width: 100%;
 }
 
 .nav-list {
@@ -310,62 +307,60 @@ footer {
 
 .nav-list li { position: relative; }
 
+/* Linklerin görünümü - Büyük harf zorlamasını kaldırdık */
 .nav-list li a {
     display: block;
     padding: 15px 25px;
     color: #333;
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    text-transform: none; /* ARTIK YAZDIĞIN GİBİ GÖRÜNECEK */
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
 }
 
-/* Hover ve Aktif Sayfa Rengi */
-.nav-list li a:hover, .nav-list li a.active { color: #e26a2c !important; }
+.nav-list li a:hover, .nav-list li a.active {
+    color: #e26a2c !important;
+}
 
-/* TELEFON AYARI (768px altı) */
+/* --- MOBİL AYARLAR (Görseldeki hatayı çözen kısım) --- */
 @media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        cursor: pointer;
-        gap: 4px;
-    }
-
-    .mobile-menu-btn span {
-        width: 25px;
-        height: 2px;
-        background-color: #333;
-    }
-
     .nav-list {
-        display: none; /* Varsayılan kapalı */
-        flex-direction: column;
+        display: none; 
+        flex-direction: column; /* LİSTEYİ ALT ALTA DİZ */
         width: 100%;
         background-color: #fdfaf6;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        border-bottom: 1px solid #333;
     }
 
-    .nav-list.is-active { display: flex; } /* JS ile açılır */
+    .nav-list.is-active { display: flex; }
 
-    .nav-list li { width: 100%; text-align: center; }
-    
+    /* Alt menüyü (Siyah kutu) dikey yapalım */
     .dropdown-content {
-        position: static !important;
         display: none;
+        flex-direction: column !important; /* LİNKLERİ MUTLAK SURETLE ALT ALTA DİZ */
         background-color: #333;
         width: 100%;
+        padding: 0;
     }
 
-    .dropdown.is-open .dropdown-content { display: block !important; }
+    .dropdown.is-open .dropdown-content {
+        display: flex !important; /* Açılınca dikey olarak göster */
+    }
+
+    .dropdown-content li {
+        width: 100%;
+        border-bottom: 1px solid #444;
+    }
+
+    .dropdown-content li a {
+        color: #fdfaf6 !important;
+        padding: 15px !important;
+        text-align: center; /* Mobilde ortalı daha şık durur */
+        font-size: 0.95rem;
+    }
 }
 
-/* MASAÜSTÜ DROPDOWN */
+/* --- MASAÜSTÜ İÇİN EKSTRA ZARAFET --- */
 @media (min-width: 769px) {
     .dropdown-content {
         display: none;
@@ -374,8 +369,7 @@ footer {
         left: 0;
         background-color: #333;
         min-width: 220px;
+        flex-direction: column;
     }
-    .dropdown.is-open .dropdown-content { display: flex; flex-direction: column; }
+    .dropdown.is-open .dropdown-content { display: flex; }
 }
-
-.dropdown-content li a { color: #fdfaf6 !important; padding: 12px !important; }
