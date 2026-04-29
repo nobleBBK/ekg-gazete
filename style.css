@@ -284,30 +284,26 @@ footer {
 }
 
 /* NAVİGASYON ANA DÜZEN */
+/* Navigasyonun kendi içinde kaymasını sağlar */
 .main-nav {
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    background: #fdfaf6;
-    position: relative;
+    overflow-x: auto; /* Sadece navigasyon çubuğu yatay kayabilsin */
+    overflow-y: visible; /* Dropdown aşağı doğru görünebilsin */
+    -webkit-overflow-scrolling: touch; /* Mobilde pürüzsüz kaydırma */
+    scrollbar-width: none; /* Firefox için scrollbar gizle */
+}
+
+.main-nav::-webkit-scrollbar {
+    display: none; /* Chrome/Safari için scrollbar gizle (daha temiz durur) */
 }
 
 .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap; /* Elemanların alt satıra geçmesini engeller */
+    white-space: nowrap; /* Metinlerin tek satırda kalmasını sağlar */
+    justify-content: flex-start; /* Elemanları sola yaslar (kaydırma için şart) */
+    padding: 0 15px; /* Kenarlardan çok az boşluk */
 }
 
-.nav-list > li > a {
-    display: block;
-    padding: 15px 20px;
-    color: #333;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
 
 /* DROPDOWN - GİZLİ KUTU AYARI */
 .dropdown {
@@ -326,6 +322,9 @@ footer {
     padding: 0;
     margin: 0;
     flex-direction: column; /* Elemanları alt alta zorlar */
+    max-width: 200px; /* Sabit genişlik sayfa dengesini bozmaz */
+    left: 0;
+    right: auto;
 }
 
 /* Alt Menü Linkleri */
