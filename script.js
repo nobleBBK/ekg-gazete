@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropbtn = document.querySelector('.dropbtn');
 
     if (dropbtn) {
+        // Tıklama olayını kontrol et
         dropbtn.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation(); // Tıklamanın dışarı sızmasını engeller
+            e.stopPropagation();
             
-            // "open" sınıfı varsa kaldırır, yoksa ekler (Gerçek Toggle)
+            // Açıksa kapat, kapalıysa aç (Gerçek Toggle)
             if (dropdown.classList.contains('open')) {
                 dropdown.classList.remove('open');
             } else {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Menü dışındaki boş bir yere tıklandığında/dokunulduğunda kapat
+    // Menü dışındaki boşluğa basınca kapat
     document.addEventListener('click', function(e) {
         if (dropdown && !dropdown.contains(e.target)) {
             dropdown.classList.remove('open');

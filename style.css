@@ -283,182 +283,106 @@ footer {
     border-bottom: 2px solid #e26a2c;
 }
 
-/* --- EKG MENÜ GÖRSEL TASARIM --- */
+/* --- EKG EVRENSEL SIFIRLAMA --- */
 
+/* --- ANA NAVİGASYON (YAPIŞKAN & ÇİZGİLİ) --- */
 .main-nav {
-    border-top: 1px solid #333;    /* Üst çizgi */
-    border-bottom: 1px solid #333; /* Alt çizgi */
-    background-color: #fdfaf6;     /* Sayfa rengiyle uyumlu arka plan */
-    margin: 20px 0;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    background-color: #fdfaf6;
+    position: sticky; /* Sayfa kaysa da en üstte yapışık kalır */
+    top: 0;
+    z-index: 9999;
     width: 100%;
+    /* Mobilde kaydırma, masaüstünde sabit durma ayarı */
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.main-nav::-webkit-scrollbar {
+    display: none; /* Kaydırma çubuğunu gizler */
 }
 
 .nav-list {
     display: flex;
-    justify-content: center;       /* Menüyü tam ortaya toplar */
-    list-style: none !important;   /* Noktaları kesinlikle siler */
+    justify-content: center; /* Masaüstünde ortalar */
+    list-style: none !important;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
 }
 
 .nav-list li {
-    list-style: none !important;   /* Liste elemanı noktalarını siler */
-    position: relative;            /* Açılır menü için merkez noktası */
+    list-style: none !important;
+    position: relative;
 }
 
+/* Linklerin Görünümü ve Hover (Turuncu) Efekti */
 .nav-list li a {
     display: block;
     padding: 15px 25px;
     color: #333;
-    text-decoration: none;         /* Alt çizgiyi kaldırır */
-    text-transform: uppercase;     /* Büyük harf estetiği */
+    text-decoration: none;
+    text-transform: uppercase;
     font-size: 0.85rem;
-    letter-spacing: 1px;           /* Harf arası boşluk */
+    letter-spacing: 1px;
+    transition: color 0.3s ease; /* Renk geçişini yumuşatır */
 }
 
-/* AÇILIR KUTU TASARIMI */
+/* Üzerine gelince o meşhur turuncuya döner */
+.nav-list li a:hover,
+.nav-list li a.active {
+    color: #e26a2c !important; 
+}
+
+/* --- AÇILIR MENÜ (DROPDOWN) --- */
 .dropdown-content {
     display: none; /* Başlangıçta gizli */
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #333; /* Koyu gazete siyahı */
+    background-color: #333;
     min-width: 220px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
-    z-index: 1000;
     padding: 0;
     margin: 0;
     list-style: none !important;
-    flex-direction: column; /* Linkleri alt alta diz */
+    flex-direction: column;
 }
 
-/* Alt menü linkleri */
-.dropdown-content li {
-    width: 100%;
-    border-bottom: 1px solid #444; /* Linkler arası ince çizgi */
-}
-
-.dropdown-content li a {
-    color: #fdfaf6 !important; /* Kağıt beyazı yazı */
-    padding: 12px 20px !important;
-    text-transform: none !important; /* Koleksiyon isimleri büyük harf olmasın, daha zarif durur */
-    font-size: 0.9rem;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content li a:hover {
-    background-color: #444; /* Üzerine gelince hafif grileşme */
-}
-
-/* JS 'open' sınıfını eklediğinde kutuyu göster */
+/* JS 'open' sınıfı eklediğinde kutuyu göster */
 .dropdown.open .dropdown-content {
     display: flex !important;
 }
 
-/* --- MOBİL NAVİGASYON KAYDIRMA --- */
+.dropdown-content li {
+    width: 100%;
+    border-bottom: 1px solid #444;
+}
 
+.dropdown-content li a {
+    color: #fdfaf6 !important;
+    padding: 12px 20px !important;
+    text-transform: none !important;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.dropdown-content li a:hover {
+    background-color: #444;
+    color: #e26a2c !important; /* Alt menüde de turuncu vurgu */
+}
+
+/* --- MOBİL ÖZEL AYARI --- */
 @media (max-width: 768px) {
-    .main-nav {
-        /* Yatayda kaymaya izin ver, dikeyde açılır menüyü saklama */
-        overflow-x: auto; 
-        overflow-y: visible;
-        
-        /* Mobilde pürüzsüz kaydırma hissi */
-        -webkit-overflow-scrolling: touch;
-        
-        /* Çirkin scroll bar çizgisini gizle */
-        scrollbar-width: none; 
-    }
-
-    .main-nav::-webkit-scrollbar {
-        display: none; /* Chrome ve Safari'de scroll barı gizler */
-    }
-
     .nav-list {
-        /* Elemanları sola yasla ki kaydırma başlasın */
-        justify-content: flex-start !important;
-        
-        /* Elemanların alt satıra geçmesini engelle, tek sıra diz */
-        flex-wrap: nowrap !important;
-        
-        /* Sağdan soldan küçük bir nefes payı bırak */
-        padding: 0 15px;
-    }
-
-    .nav-list li a {
-        /* Kelimelerin bölünmesini engelle */
-        white-space: nowrap;
-        padding: 15px 18px; /* Mobilde parmak mesafesi için ideal */
+        justify-content: flex-start; /* Mobilde sola yaslar ki kaysın */
+        padding: 0 10px;
     }
 }
 
 
 
-/* GÖSTERME KOMUTLARI */
-/* Bilgisayar için: */
-@media (hover: hover) {
-    .dropdown:hover .dropdown-content {
-        display: flex;
-    }
-}
-
-/* Mobil/Tablet için (JS ile çalışır): */
-.dropdown.open .dropdown-content {
-    display: flex;
-}
-
-/* --- MOBİL DİKEY EKRAN CERRAHİ MÜDAHALE --- */
-
-@media (max-width: 480px) { /* Sadece dikey telefonlar için */
-    .dropdown-content {
-        left: auto !important;
-        right: 0 !important; /* Menü sağa yaslansın ki ekrandan taşmasın */
-        width: 90vw !important; /* Ekranın %90'ını kaplasın */
-        max-width: 280px; /* Ama çok da devasa olmasın */
-        top: 100% !important;
-        position: absolute !important;
-    }
-}
-
-/* Tıklama alanını garantiye alalım */
-.dropbtn {
-    position: relative;
-    z-index: 10; 
-    padding: 15px 10px; /* Dokunma alanını biraz büyüttük */
-}
-
-/* --- DİKEY EKRAN NÜKLEER ÇÖZÜM --- */
-
-/* 1. Menünün kesilmesini önlemek için tüm üst yolları açıyoruz */
-header, .main-nav, .nav-list {
-    overflow: visible !important;
-    position: relative !important;
-}
-
-/* --- MOBİL MENÜ YERLEŞİM DÜZELTMESİ --- */
-@media (max-width: 768px) {
-    .dropdown-content {
-        display: none;
-        position: absolute !important; /* FIXED yerine ABSOLUTE: Butona sadık kalır */
-        top: 100% !important; /* Butonun hemen altından başlar */
-        left: 0 !important; /* Butonun soluna yaslanır */
-        width: 200px !important; /* Sabit ve makul bir genişlik */
-        background-color: #333 !important;
-        z-index: 99999 !important;
-        flex-direction: column !important;
-        
-    }
-
-    .dropdown.open .dropdown-content {
-        display: flex !important;
-    }
-
-    /* Menü açılınca navigasyonun onu kesmesini önler */
-    .main-nav, .nav-list, .dropdown {
-        overflow: visible !important;
-    }
-}
-
-}
 
