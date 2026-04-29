@@ -34,7 +34,7 @@ header h1 {
     /* --- TAŞMAYI ÖNLEYEN KRİTİK AYARLAR --- */
     letter-spacing: 8px;
     /* En sondaki harfin sağındaki 8px boşluğu telafi edip bloğu tam merkeze çeker */
-    margin-right: -20px; 
+    margin-right: -8px; 
     padding: 0;
 }
 
@@ -43,7 +43,8 @@ header h1::after {
     content: "";
     display: block;
     /* Artık bounding box düzeldiği için tam %100 kullanabiliriz */
-    width: 100%; 
+    width: (100% - 10px);
+    margin: 2px auto 0;
     height: 2px;
     background: #e26a2c;
     
