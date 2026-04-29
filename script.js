@@ -3,14 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropbtn = document.querySelector('.dropbtn');
 
     if (dropbtn) {
-        dropbtn.addEventListener('click', (e) => {
+        // Hem tıklama hem dokunma için en güvenli yöntem
+        const toggleMenu = (e) => {
             e.preventDefault();
             e.stopPropagation();
             dropdown.classList.toggle('open');
-        });
+        };
+
+        dropbtn.addEventListener('click', toggleMenu);
     }
 
-    // Başka yere dokunulursa menüyü kapat
+    // Dışarı dokunulursa kapat
     document.addEventListener('click', (e) => {
         if (dropdown && !dropdown.contains(e.target)) {
             dropdown.classList.remove('open');

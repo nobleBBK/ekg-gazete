@@ -344,3 +344,23 @@ footer {
 .dropdown.open .dropdown-content {
     display: flex;
 }
+
+/* --- MOBİL DİKEY EKRAN CERRAHİ MÜDAHALE --- */
+
+@media (max-width: 480px) { /* Sadece dikey telefonlar için */
+    .dropdown-content {
+        left: auto !important;
+        right: 0 !important; /* Menü sağa yaslansın ki ekrandan taşmasın */
+        width: 90vw !important; /* Ekranın %90'ını kaplasın */
+        max-width: 280px; /* Ama çok da devasa olmasın */
+        top: 100% !important;
+        position: absolute !important;
+    }
+}
+
+/* Tıklama alanını garantiye alalım */
+.dropbtn {
+    position: relative;
+    z-index: 10; 
+    padding: 15px 10px; /* Dokunma alanını biraz büyüttük */
+}
