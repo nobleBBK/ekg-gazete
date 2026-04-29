@@ -43,7 +43,7 @@ header h1::after {
     content: "";
     display: block;
     /* Artık bounding box düzeldiği için tam %100 kullanabiliriz */
-    width: (100% - 10px);
+    width: (100% - 8px);
     margin: 2px auto 0;
     height: 2px;
     background: #e26a2c;
