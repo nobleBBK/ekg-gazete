@@ -24,34 +24,26 @@ header {
     background-color: #fdfaf6;
 }
 
-header h1 {
-    font-size: 4.5rem;
+/* --- SADECE LOGO İÇİN NABIZ (PULSE) --- */
+.site-title {
+    font-size: 4rem;
     margin: 0;
     font-weight: bold;
     position: relative;
     display: inline-block;
-    
-    /* --- TAŞMAYI ÖNLEYEN KRİTİK AYARLAR --- */
     letter-spacing: 8px;
-    /* En sondaki harfin sağındaki 8px boşluğu telafi edip bloğu tam merkeze çeker */
-    margin-right: -8px; 
+    margin-right: -8px;
+    /* Hayalet boşluğu sıfırlar */
     padding: 0;
 }
 
-/* Nabız Çizgisi */
-header h1::after {
+.site-title::after {
     content: "";
     display: block;
-    /* Artık bounding box düzeldiği için tam %100 kullanabiliriz */
-    width: (100% - 8px);
-    margin: 2px auto 0;
+    width: 100%;
     height: 2px;
     background: #e26a2c;
-    
-    /* --- BOŞLUĞU DARALTAN AYAR --- */
-    /* 12px olan boşluğu 2px'e indirdik, tam harflerin dibine çektik */
-    margin: 2px auto 0; 
-    
+    margin: 2px auto 0;
     animation: real-heartbeat 5s infinite ease-in-out;
     transform-origin: center;
 }
@@ -496,4 +488,16 @@ a, a:visited, a:hover, a:active {
     font-style: italic;
     color: #444;
     font-size: 1rem;
+}
+
+/* Yazı sayfasındaki başlıkta animasyonu durdurur */
+.article-header h1 {
+    animation: none !important;
+    position: relative;
+    display: block;
+}
+
+.article-header h1::after {
+    content: none !important;
+    /* Hareketli çizgiyi tamamen yok eder */
 }
