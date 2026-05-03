@@ -501,3 +501,57 @@ a, a:visited, a:hover, a:active {
     content: none !important;
     /* Hareketli çizgiyi tamamen yok eder */
 }
+
+/* ============================================================
+   EKG ANALOG SAYFA KIVRILMA ESTETİĞİ (PAGE CURL)
+   ============================================================ */
+
+/* 1. KARTLARIN HAZIRLANMASI */
+.post-card, .main-featured {
+    position: relative; /* Kıvrımın konumlanması için şart */
+    overflow: hidden;   /* Kıvrımın dışarı taşmasını engeller */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 2. KIVRILAN KÖŞE (GÖRSEL İLLÜZYON) */
+.post-card::before, .main-featured::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    /* Sayfa renginden bir ton koyu, kağıt arkası hissi veren renk */
+    background: linear-gradient(135deg, 
+        rgba(239, 235, 228, 1) 45%, 
+        rgba(215, 210, 195, 1) 50%, 
+        rgba(150, 150, 150, 0.2) 56%, 
+        rgba(0, 0, 0, 0.1) 80%);
+    
+    transition: all 0.4s ease;
+    z-index: 5;
+    /* Hafif bir gölge ile derinlik katıyoruz */
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 3. HOVER (ÜZERİNE GELİNDİĞİNDE) ETKİSİ */
+.post-card:hover::before, .main-featured:hover::before {
+    width: 45px;  /* Kıvrımın büyüklüğü */
+    height: 45px;
+}
+
+/* 4. ACTIVE (TIKLANDIĞINDA) ETKİSİ */
+.post-card:active::before, .main-featured:active::before {
+    width: 60px;  /* Tıklayınca biraz daha fazla kıvrılır */
+    height: 60px;
+    background: linear-gradient(135deg, 
+        rgba(226, 106, 44, 0.2) 45%, /* Bizim turuncudan hafif bir esinti */
+        rgba(215, 210, 195, 1) 50%, 
+        rgba(0, 0, 0, 0.2) 80%);
+}
+
+/* 5. KARTIN GENEL HOVER DURUMU */
+.post-card:hover, .main-featured:hover {
+    transform: translateY(-5px); /* Hafif yükselme efekti ile birleşsin */
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.05);
+}
