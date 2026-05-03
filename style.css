@@ -522,7 +522,7 @@ a, a:visited, a:hover, a:active {
     width: 0;
     height: 0;
     /* Sayfa renginden bir ton koyu, kağıt arkası hissi veren renk */
-    background: linear-gradient(90deg, 
+    background: linear-gradient(135deg, 
         rgba(239, 235, 228, 1) 45%, 
         rgba(215, 210, 195, 1) 50%, 
         rgba(150, 150, 150, 0.2) 56%, 
