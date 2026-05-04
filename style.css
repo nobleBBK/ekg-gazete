@@ -503,50 +503,52 @@ a, a:visited, a:hover, a:active {
 }
 
 /* ============================================================
-   EKG ANALOG SAYFA KIVRILMA - SAĞ ALT KÖŞE (REVISED)
+   EKG ANALOG SAYFA KIVRILMA - CERRAHİ DÜZENLEME (SAĞ ALT)
    ============================================================ */
 
 .post-card, .main-featured {
     position: relative;
     overflow: hidden;
+    /* Kartın ana zemini: Antik Kağıt tonu */
+    background-color: #f9f7f2; 
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* KIVRILAN KÖŞE: SAĞ ALT MÜDAHALESİ */
 .post-card::before, .main-featured::before {
     content: "";
     position: absolute;
-    /* Koordinatları sağ alta mühürledik */
     bottom: 0;
     right: 0;
     width: 0;
     height: 0;
     
-    /* Işık açısı sağ alt katlamaya göre 45 derecelik açıyla revize edildi */
-    background: linear-gradient(45deg, 
-        rgba(239, 235, 228, 1) 45%, /* Kağıt rengi */
-        rgba(215, 210, 195, 1) 50%, /* Katlanma çizgisi */
-        rgba(0, 0, 0, 0.05) 55%,    /* Gölgelenme */
-        transparent 60%);
+    /* GRADIENT SİHRİ: 
+       45 derecelik açıda %50'ye kadar şeffaf (alt zemin görünür), 
+       tam %50'de kağıdın arka yüzü başlar. 
+       Böylece çizgi kartın ortasına uzanmaz, sadece üçgende kalır.
+    */
+    background: linear-gradient(135deg, 
+        transparent 50%, 
+        #e0ddd5 50%,  /* Kıvrımın iç/arka yüzü (biraz daha gri/koyu) */
+        #f4f1ea 100%   /* Kıvrımın en ucu */
+    );
     
     transition: all 0.4s ease;
     z-index: 5;
-    /* Gölgeyi yukarı ve sola doğru yönlendirdik */
-    box-shadow: -2px -2px 5px rgba(0,0,0,0.05);
+    
+    /* Kıvrımın altına düşen o asude gölge */
+    box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* HOVER DURUMU */
+/* HOVER: KÖŞE KIVRILIR */
 .post-card:hover::before, .main-featured:hover::before {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
 }
 
-/* TIKLAMA (ACTIVE) DURUMU */
+/* ACTIVE: TIKLAYINCA KAĞIT BİRAZ DAHA LİFT EDİLİR */
 .post-card:active::before, .main-featured:active::before {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, 
-        rgba(226, 106, 44, 0.2) 45%, /* İmza turuncumuzun hafif yansıması */
-        rgba(215, 210, 195, 1) 50%, 
-        rgba(0, 0, 0, 0.15) 80%);
+    width: 65px;
+    height: 65px;
+    box-shadow: -5px -5px 12px rgba(0, 0, 0, 0.15);
 }
