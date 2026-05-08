@@ -552,3 +552,19 @@ a, a:visited, a:hover, a:active {
     height: 65px;
     box-shadow: -5px -5px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* --- MAKALE İÇİ METİN LİNKLERİ (ATIFLAR) --- */
+
+.article-body a {
+    color: #e26a2c !important; /* İmza turuncumuz */
+    font-weight: 600; /* Biraz daha kalın durması için */
+    text-decoration: none;
+    border-bottom: 1px solid rgba(226, 106, 44, 0.3); /* Çok ince, zarif bir alt çizgi */
+    transition: all 0.3s ease;
+}
+
+.article-body a:hover {
+    color: #333 !important; /* Üzerine gelince koyulaşsın */
+    border-bottom: 1px solid #e26a2c; /* Alt çizgi belirginleşsin */
+    background-color: rgba(226, 106, 44, 0.05); /* Çok hafif bir arka plan vurgusu */
+}
