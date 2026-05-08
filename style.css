@@ -568,3 +568,41 @@ a, a:visited, a:hover, a:active {
     border-bottom: 1px solid #e26a2c; /* Alt çizgi belirginleşsin */
     background-color: rgba(226, 106, 44, 0.05); /* Çok hafif bir arka plan vurgusu */
 }
+
+/* --- YAZI NAVİGASYON OKLARI --- */
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #ddd;
+    font-family: 'Playfair Display', serif;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    max-width: 45%;
+}
+
+.nav-link:hover {
+    color: #e26a2c;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.nav-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Sağ ve Sol hizalamaları */
+.nav-next { text-align: left; }
+.nav-prev { text-align: right; }
